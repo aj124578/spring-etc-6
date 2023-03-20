@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter
+
+@Getter @Setter @ToString
 public class BoardDetailOutDto2 { // board 게시글 상세보기를 위한 최종 하면
     private Integer id;
     private String title;
@@ -13,13 +15,19 @@ public class BoardDetailOutDto2 { // board 게시글 상세보기를 위한 최�
     private UserDto user;
     private Timestamp createdAt;
 
-
+    
     public BoardDetailOutDto2(BoardDetailOutDto board) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.user = user;
-        this.createdAt = createdAt;
+        this.id = board.getId();
+        this.title = board.getTitle();
+        this.content = board.getContent();
+        this.user = new UserDto(
+            board.getUserId(),
+            board.getUserUsername(),
+            board.getUserPassword(),
+            board.getUserEmail(),
+            board.getUserCreatedAt()
+        );
+        this.createdAt = board.getCreatedAt();
     }
 
 
