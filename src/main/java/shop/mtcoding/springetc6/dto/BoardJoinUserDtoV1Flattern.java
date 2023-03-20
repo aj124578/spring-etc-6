@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @ToString // dto는 tostring 막 붙여도 됨 쓰고나서 주석처리 해도 됨
 @Getter @Setter
-public class BoardDetailOutDto {
+public class BoardJoinUserDtoV1Flattern {
     private Integer id;
     private String title;
     private String content;

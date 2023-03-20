@@ -5,12 +5,12 @@
 
 <mapper namespace="shop.mtcoding.springetc6.model.board.BoardRepository">
 
-    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.springetc6.dto.BoardJoinUserDto2">
+    <resultMap id="v3ResultMap" type="shop.mtcoding.springetc6.dto.BoardJoinUserDtoV3">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
         <result property="createdAt" column="created_at"/>
-        <association property="user" javaType="shop.mtcoding.springetc6.dto.BoardJoinUserDto2$UserDto">
+        <association property="user" javaType="shop.mtcoding.springetc6.dto.BoardJoinUserDtoV3$UserDto">
             <id property="id" column="id"/>
             <result property="username" column="username"/>
             <result property="password" column="password"/>
@@ -19,7 +19,7 @@
         </association>
     </resultMap>
 
-    <select id="findByIdJoinUser3" resultMap="boardJoinUserDto2">
+    <select id="findByIdJoinUserV3" resultMap="v3ResultMap">
         select *
         from board_tb b inner join user_tb u
         ON b.user_id = u.id
@@ -27,13 +27,13 @@
     </select>
 
 
-    <resultMap id="boardDto" type="shop.mtcoding.springetc6.dto.BoardDto">
+    <resultMap id="v2BoardDto" type="shop.mtcoding.springetc6.dto.BoardDto">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
-    <resultMap id="userDto" type="shop.mtcoding.springetc6.dto.UserDto">
+    <resultMap id="v2UserDto" type="shop.mtcoding.springetc6.dto.UserDto">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
@@ -41,13 +41,13 @@
         <result property="createdAt" column="created_at"/>
     </resultMap>
 
-    <resultMap id="boardJoinUserDto" type="shop.mtcoding.springetc6.dto.BoardJoinUserDto">
-        <association property="board" resultMap="boardDto" />
-        <association property="user" resultMap="userDto" />
+    <resultMap id="v2ResultMap" type="shop.mtcoding.springetc6.dto.BoardJoinUserDtoV2">
+        <association property="board" resultMap="v2BoardDto" />
+        <association property="user" resultMap="v2UserDto" />
         <!--<collection property="boards" resultMap="boardDto" />-->
     </resultMap>
 
-    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
+    <select id="findByIdJoinUserV2" resultMap="v2ResultMap">
         select *
         from board_tb b inner join user_tb u
         ON b.user_id = u.id
@@ -55,7 +55,7 @@
     </select>
 
 
-    <select id="findByIdJoinUser" resultType="shop.mtcoding.springetc6.dto.BoardDetailOutDto">
+    <select id="findByIdJoinUserV1" resultType="shop.mtcoding.springetc6.dto.BoardJoinUserDtoV1Flattern">
         select b.*,
                u.id user_id,
                u.username user_username,
@@ -67,26 +67,4 @@
         where b.id = #{id}
     </select>
 
-    <select id="findAll" resultType="shop.mtcoding.springetc6.model.board.Board">
-        select * from board_tb
-    </select>
-
-    <select id="findById" resultType="shop.mtcoding.springetc6.model.board.Board">
-        select * from board_tb where id = #{id}
-    </select>
-
-    <insert id="insert">
-        insert into board_tb (title, content, user_id, created_at)
-        values(#{title}, #{content}, #{userId}, now())
-    </insert>
-
-    <delete id="deleteById" >
-        delete from board_tb where id = #{id}
-    </delete>
-
-    <update id="updateById" >
-        update board_tb set title= #{title}, content= #{content}, email= #{email} where id = #{id}
-    </update>
-
-   
 </mapper>

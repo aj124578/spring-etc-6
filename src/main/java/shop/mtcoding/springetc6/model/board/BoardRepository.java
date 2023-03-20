@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import shop.mtcoding.springetc6.dto.BoardDetailOutDto;
-import shop.mtcoding.springetc6.dto.BoardJoinUserDto;
-import shop.mtcoding.springetc6.dto.BoardJoinUserDto2;
+import shop.mtcoding.springetc6.dto.BoardJoinUserDtoV1Flattern;
+import shop.mtcoding.springetc6.dto.BoardJoinUserDtoV2;
+import shop.mtcoding.springetc6.dto.BoardJoinUserDtoV3;
 
 @Mapper
 public interface BoardRepository {
@@ -20,9 +20,9 @@ public interface BoardRepository {
 
     public Board findById(int id);
 
-    public BoardDetailOutDto findByIdJoinUser(int id);
+    public BoardJoinUserDtoV1Flattern findByIdJoinUserV1(int id);
 
-    public BoardJoinUserDto findByIdJoinUser2(int id);
+    public BoardJoinUserDtoV2 findByIdJoinUserV2(int id);
 
-    public BoardJoinUserDto2 findByIdJoinUser3(int id);
+    public BoardJoinUserDtoV3 findByIdJoinUserV3(int id);
 }

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class BoardJoinUserDto2 { // 엔티티를 노출할 수 없으니 dto로 바꾸고 orm 방식으로 받은거
+public class BoardJoinUserDtoV3 { // 엔티티를 노출할 수 없으니 dto로 바꾸고 orm 방식으로 받은거
     private Integer id;
     private String title;
     private String content;

@@ -8,7 +8,7 @@ import lombok.ToString;
 
 
 @Getter @Setter @ToString
-public class BoardDetailOutDto2 { // board 게시글 상세보기를 위한 최종 하면
+public class BoardJoinUserDtoV1 { // board 게시글 상세보기를 위한 최종 하면
     private Integer id;
     private String title;
     private String content;
@@ -16,7 +16,7 @@ public class BoardDetailOutDto2 { // board 게시글 상세보기를 위한 최�
     private Timestamp createdAt;
 
     
-    public BoardDetailOutDto2(BoardDetailOutDto board) {
+    public BoardJoinUserDtoV1(BoardJoinUserDtoV1Flattern  board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
@@ -31,7 +31,8 @@ public class BoardDetailOutDto2 { // board 게시글 상세보기를 위한 최�
     }
 
 
-    @Getter @Setter
+    @Getter @Setter 
+    @ToString
     public class UserDto{ // 내부클래스로 UserDto를 만들어서 따로 사용
         private Integer id;
         private String username;
